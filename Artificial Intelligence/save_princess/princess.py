@@ -65,28 +65,28 @@ class SavePrincess(object):
         BotX = BotCoordinate[0]
         BotY = BotCoordinate[1]
 
-        PrincessX = PrincessCoordinate[0]
-        PrincessY = PrincessCoordinate[1]
+        PrincessY = PrincessCoordinate[0]
+        PrincessX = PrincessCoordinate[1]
 
-        Xdepth = BotX-PrincessX
-        Ydepth = BotY-PrincessY
+        #Xdepth = BotX-PrincessX
+        #Ydepth = BotY-PrincessY
 
-        if (Xdepth>0):
+        if (PrincessX>0):
             TurnHoriz = "LEFT"
         else :
             TurnHoriz = "RIGHT"
 
 
-        if (Ydepth>0):
+        if (PrincessY>0):
             TurnVert = "UP"
         else:
             TurnVert = "DOWN"
 
 
-        for turns in xrange(0,abs(Xdepth)):
+        for turns in xrange(0,abs(PrincessX)):
             Journey.append(TurnVert)
 
-        for turns in xrange(0,abs(Ydepth)):
+        for turns in xrange(0,abs(PrincessY)):
             Journey.append(TurnHoriz)
 
 
@@ -104,6 +104,12 @@ def displayPathtoPrincess(n,grid):
     else:
         BotPosition = Matrix.BotCoordinate()
         PrincessPosition = Matrix.PrincessCoordinate()
+        #print BotPosition, PrincessPosition
+
+        ## Changing the coordinate wrt to BOT
+        PrincessPosition[0] = BotPosition[0]-PrincessPosition[0]
+        PrincessPosition[1] = BotPosition[1]-PrincessPosition[1]
+        BotPosition = [0,0]
         #print BotPosition, PrincessPosition
         print Matrix.PathToPrincess(BotPosition,PrincessPosition)       
 
